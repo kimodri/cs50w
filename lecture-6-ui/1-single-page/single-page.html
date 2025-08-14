@@ -1,0 +1,58 @@
+<!-- This is one of the trend becauase we are so used to renderng whole html from the server
+however, that can be too inefficient if there are a lot of components that the html is rendering  
+therefore, it is better to just use one page and hide the others using javascript
+
+- This is also used if you are just retrieving contents from the database
+- The strategy here is 
+    - hide all the pages (except maybe the landing page) at the start with the styling
+    - hide all the pages
+    - show only the page that you want
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            single-page-app
+        </title>
+
+        <!-- We don't want the pages to appear first -->
+        <style>
+            div{
+                display: none;
+            }
+        </style>
+        <script>
+            function showPage(page){
+                document.querySelectorAll('div').forEach(div=>{
+                    div.style.display = 'none';
+                })
+
+                document.querySelector(`#${page}`).style.display = 'block';
+            }
+
+            document.addEventListener('DOMContentLoaded', ()=>{
+                document.querySelectorAll('button').forEach(button=>{
+                    button.onclick = function(){
+                        showPage(this.dataset.page);
+                    }
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <div id="page1">This is page 1.</div>
+        <div id="page2">This is page 2.</div>
+        <div id="page3">This is page 3.</div>
+
+        <!-- We want to add the data because this is what we are gonna get after an event 
+            This data will be responsible for getting the id of the divs
+         -->
+        <button data-page="page1">1</button>
+        <button data-page="page2">2</button>
+        <button data-page="page3">3</button>
+    </body>
+</html>
+
+<!-- The thing here is everything is on the client side, what if what we want is from the serverside ...
+ That is the next lesson. -->

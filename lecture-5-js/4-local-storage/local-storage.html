@@ -1,0 +1,42 @@
+<!-- Local storage is like a dictionary
+ you often use the following methods:
+        
+        localStorage.setItem('key', value);
+        localStorage.getItem('key');
+
+So to impliment the counter so that the browser remembers the count, we can
+ -->
+
+ <!DOCTYPE html>
+ <html lang="en">
+    <head>
+        <title>counter</title>
+        <script>
+            if (!localStorage.getItem('count')){
+                localStorage.setItem('count', 0)
+            }
+
+            counter = localStorage.getItem('count');
+            function count(){
+                counter++;
+                document.querySelector('h1').innerHTML = counter;
+
+                // update the local storage
+                localStorage.setItem('count', counter);
+            }
+            
+            document.addEventListener('DOMContentLoaded', ()=>{
+                // add the value of the count to the html
+                document.querySelector('h1').innerHTML = localStorage.getItem('count');
+
+                // add listener to the button
+                document.querySelector('button').onclick = count;
+                
+            })
+        </script>
+    </head>
+    <body>
+        <h1>0</h1>
+        <button id="count">Count</button>
+    </body>
+ </html>
