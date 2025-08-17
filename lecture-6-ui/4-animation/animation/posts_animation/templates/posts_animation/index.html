@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Posts with Animation</title>
+        <script src="{% static 'posts_animation/posts_animation.js' %}"></script>
+        <style>
+            @keyframes hide {
+                0% {
+                    opacity: 1;
+                    height: 100%;
+                    line-height: 100%;
+                    padding: 20px;
+                    margin-bottom: 10px;
+                }
+                75% {
+                    opacity: 0;
+                    height: 100%;
+                    line-height: 100%;
+                    padding: 20px;
+                    margin-bottom: 10px;
+                }
+                100% {
+                    opacity: 0;
+                    height: 0px;
+                    line-height: 0px;
+                    padding: 0px;
+                    margin-bottom: 0px;
+                }
+            }
+            .post {
+                background-color: #77dd11;
+                padding: 20px;
+                margin: 10px;
+                animation-name: hide;
+                animation-duration: 2s;
+                animation-play-state: paused;
+                animation-fill-mode: forwards;
+            }
+
+            body {
+                padding-bottom: 50px;
+            }                
+        </style>
+    </head>
+    <body>
+        <div id="posts_container"></div>
+    </body>
+</html>

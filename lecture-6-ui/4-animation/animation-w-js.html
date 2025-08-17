@@ -1,0 +1,50 @@
+<!-- You can control the animation with javascript by manipulating the animation related css properties when an event took place -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>animation with js</title>
+        <style>
+            @keyframes moveLeft{
+                0%{
+                    transform: translateX(0px);
+                }
+                50%{
+                    transform: translateX(50vw);
+                }
+                100%{
+                    transform: translateX(0px);
+                }
+            }
+
+            h1{
+                animation-name: moveLeft;
+                animation-duration: 2s;
+                animation-iteration-count: infinite;
+                animation-fill-mode: forwards;
+            }
+        </style>
+        <script>
+            document.addEventListener('DOMContentLoaded', ()=>{
+                const h1 = document.querySelector('h1');
+
+                // start the animation with pause
+                h1.style.animationPlayState = 'paused' 
+                
+                document.querySelector('button').onclick = function(){
+                    if (h1.style.animationPlayState === 'paused'){
+                        h1.style.animationPlayState = 'running';
+                    }
+                    else{
+                        h1.style.animationPlayState =  'paused';
+                    }
+
+                }
+            })
+        </script>
+    </head>
+    <body>
+        <button>Click here!</button>
+        <h1>Hello, world!</h1>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+<!-- In animation, what you do is define an animation and you get the component (target) that gets that animation -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>
+            Simple Animation
+        </title>
+        <style>
+            @keyframes grow{
+                from{
+                    font-size: 0px;
+                }
+                to{
+                    font-size: 100px;
+                }
+            }
+
+            h1{
+                animation-name: grow;
+                animation-duration: 2s;
+                animation-fill-mode: none; /* This is important, forwards means the 
+                animation will stay as what it is in the end of the animation*/
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Hello!</h1>
+    </body>
+</html>
